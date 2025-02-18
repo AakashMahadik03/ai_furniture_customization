@@ -1,7 +1,5 @@
 package com.example.furnitures.entity;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,20 +7,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Data
 @Entity
-@Table(name = "Carts")
-public class Cart {
+@Table(name = "GeneratedImages")
+public class GeneratedImages {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
-	private int cartId;
+	private int imageId;
 	
-	private List<Product> productList;
+	private int userId;
 	
-	private int quantity;
+	private String prompt;
 	
-	private int cartPrice;
+	private String imageUrl;
+
+
 	
 }

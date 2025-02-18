@@ -26,5 +26,6 @@ public class Merchant {
 	
 	private String  password;
 	
+	private float rating;
 	
 }
