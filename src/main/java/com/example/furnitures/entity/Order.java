@@ -1,5 +1,7 @@
 package com.example.furnitures.entity;
 
+import java.util.List;
+
 import com.example.furnitures.enums.Status;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -24,11 +28,11 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private int orderId;
 	
-	private int userId;
+	@OneToOne
+	private User user;
 	
-	private int productId;
-	
-	private int merchantId;
+	@OneToMany
+	private List<Product> productList;
 	
 	private int quantity;
 	
@@ -36,9 +40,5 @@ public class Order {
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
-
-	public void fun() {
-		
-	}
 
 }

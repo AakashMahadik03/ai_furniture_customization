@@ -2,7 +2,7 @@ package com.example.furnitures.enums;
 
 public enum Status {
 
-	Peanding,
+	Pending,
 	Processing,
 	Shipped,
 	Delivered,

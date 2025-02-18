@@ -1,5 +1,7 @@
 package com.example.furnitures.entity;
 
+import java.util.List;
+
 import com.example.furnitures.enums.Role;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -36,6 +39,9 @@ public class User {
 	
 	@OneToOne
 	private Cart cart;
+	
+	@OneToMany
+	private List<GeneratedImages> generatedImages;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;

@@ -26,7 +26,7 @@ public class DealerQuotes {
 	
 	private int price;
 	
-	private Date estimatedDelivery;
+	private Date estimatedDeliveryDate;
 	
 
 }
