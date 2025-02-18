@@ -1,39 +1,30 @@
 package com.example.furnitures.entity;
 
-import com.example.furnitures.enums.Role;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Data
 @Entity
-@Table(name = "Users")
-public class User {
+@Table(name = "Merchants")
+public class Merchant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
-	private int userId;
+	private int merchantId;
 	
 	private String firstName;
 	
 	private String lastName;
 	
-	private String emailId;
+	private String email;
 	
-	private String password;
+	private String phone_number;
 	
-	private String phoneNumber;
+	private String  password;
 	
-	private String address;
-	
-	@Enumerated(EnumType.STRING)
-	private Role role;
 	
 }

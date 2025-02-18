@@ -1,6 +1,6 @@
 package com.example.furnitures.entity;
 
-import com.example.furnitures.enums.Role;
+import com.example.furnitures.enums.Status;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,29 +11,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Data
 @Entity
-@Table(name = "Users")
-public class User {
+@Table(name = "Orders")
+public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
+	private int orderId;
+	
 	private int userId;
 	
-	private String firstName;
+	private int productId;
 	
-	private String lastName;
+	private int merchantId;
 	
-	private String emailId;
+	private int quantity;
 	
-	private String password;
-	
-	private String phoneNumber;
-	
-	private String address;
+	private int totalPrice;
 	
 	@Enumerated(EnumType.STRING)
-	private Role role;
-	
+	private Status status;
+
+
 }
