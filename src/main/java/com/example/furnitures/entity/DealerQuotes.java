@@ -1,12 +1,13 @@
 package com.example.furnitures.entity;
 
-import java.util.Date;
+import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -14,19 +15,20 @@ import lombok.Data;
 @Entity
 @Table(name = "DealerQuotes")
 public class DealerQuotes {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long quoteId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private int DealerQuotesId;
-	
-	@OneToOne
-	private Feasibility feasibility;
-	
-	private Merchant merchant;
-	
-	private int price;
-	
-	private Date estimatedDeliveryDate;
-	
+    @ManyToOne
+    @JoinColumn(name = "image_id")
+    private GeneratedImages generatedImages;
 
+    @ManyToOne
+    @JoinColumn(name = "merchant_id")
+    private Merchant merchant;
+
+    private Boolean feasibility;
+    private BigDecimal price;
+    private String estimatedDelivery;
+    private String comments;
 }

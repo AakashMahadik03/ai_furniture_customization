@@ -1,8 +1,6 @@
 package com.example.furnitures.entity;
 
-import java.util.List;
-
-import com.example.furnitures.enums.Status;
+import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,35 +8,45 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private int orderId;
-	
-	@OneToOne
-	private User user;
-	
-	@OneToMany
-	private List<Product> productList;
-	
-	private int quantity;
-	
-	private int totalPrice;
-	
-	@Enumerated(EnumType.STRING)
-	private Status status;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "merchant_id")
+    private Merchant merchant;
+
+    private Integer quantity;
+    private BigDecimal totalPrice;
+    
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+    
+    public enum OrderStatus {
+        PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+    }
 }
+

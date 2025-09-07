@@ -1,40 +1,40 @@
 package com.example.furnitures.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private int productId;
-	
-	@OneToOne
-	private Merchant merchant;
-	
-	private String productName;
-	
-	@ManyToOne
-	private Category category;
-	
-	private String imageUrl;
-	
-	private String description;
-	
-	private int price;
-	
-	
+    @ManyToOne
+    @JoinColumn(name = "merchant_id")
+    private Merchant merchant;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    
+    private String name;
+    private String imageUrl;
+    private String description;
+    private BigDecimal price;
 }
